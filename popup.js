@@ -23,11 +23,15 @@ onload = async () => {
   for (var dom of ls.domains) {
     createelem(document.body, "input", {
       value: dom,
+      spellcheck: false,
+      autocomplete: "off",
       onchange: updateDomains,
     })
   }
   createelem(document.body, "input", {
     value: "",
+    spellcheck: false,
+    autocomplete: "off",
     onchange: updateDomains,
   })
 }

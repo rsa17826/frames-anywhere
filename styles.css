@@ -1,0 +1,14 @@
+html,
+body {
+  background-color: #000;
+  color: rgb(34, 196, 255);
+}
+input {
+  background-color: #000;
+  color: #aaa;
+  border: 2px solid #63a9b4;
+}
+input:focus {
+  outline: none;
+  border: 2px solid rgb(34, 196, 255);
+}
