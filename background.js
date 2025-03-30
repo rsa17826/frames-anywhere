@@ -20,13 +20,20 @@ Object.assign(globalThis, console)
 chrome.webRequest.onHeadersReceived.addListener(
   function (details) {
     const matched =
+      ls.domains.includes("*") ||
       ls.domains
-        .map((e) => e.replace(/^https?:\/\//, "").replace(/\/$/, ""))
+        .map((e) =>
+          e
+            .trim()
+            .replace(/^https?:\/\//, "")
+            .replace(/\/$/, "")
+        )
         .includes(
           details.initiator
             .replace(/^https?:\/\//, "")
             .replace(/\/$/, "")
-        ) || details.url.includes(details.initiator)
+        ) ||
+      details.url.includes(details.initiator)
     if (!details.url.includes(details.initiator))
       console[matched ? "log" : "error"](
         "from",
